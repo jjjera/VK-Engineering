@@ -115,7 +115,7 @@ function NavigationHeader() {
             </NavItem>
             <NavItem>
               <NavLink
-                 href="/contacts"
+                 href="/contact"
               >
               Contacts
               </NavLink>
