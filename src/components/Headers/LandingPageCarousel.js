@@ -2,7 +2,7 @@ import React from "react";
 import SectionCarousel from '../Views/SectionCarousel';
 
 
-function LandingPageHeader() {
+function LandingPageCarousel() {
   let pageHeader = React.createRef();
 
   React.useEffect(() => {
@@ -33,4 +33,4 @@ function LandingPageHeader() {
   );
 }
 
-export default LandingPageHeader;
+export default LandingPageCarousel;

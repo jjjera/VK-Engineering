@@ -1,5 +1,6 @@
 import React from "react";
 import { Link , BrowserRouter as Router} from "react-router-dom";
+
 // nodejs library that concatenates strings
 import classnames from "classnames";
 
@@ -14,7 +15,8 @@ import {
   Container
 } from "reactstrap";
 
-function NavigationBar() {
+function NavigationHeader() {
+  
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [navbarCollapse, setNavbarCollapse] = React.useState(false);
 
@@ -44,6 +46,7 @@ function NavigationBar() {
       window.removeEventListener("scroll", updateNavbarColor);
     };
   });
+
   return (
     <Navbar
       className={classnames("fixed-top", navbarColor)}
@@ -76,16 +79,16 @@ function NavigationBar() {
           navbar
           isOpen={navbarCollapse}
         >
-        {/* <Router>
+        <Router>
             <Link to="/">Home</Link>
             <Link to="/about-us">About-Us</Link>
             <Link to="/services">Services</Link>
             <Link to="/products">Products</Link>
             <Link to="/contact">Contact</Link>
-        </Router> */}
-          <Nav navbar>
+        </Router>
+          {/* <Nav navbar>
             <NavItem>
-              <NavLink href="/" >
+              <NavLink to="/" >
                 Home
               </NavLink>
             </NavItem>
@@ -117,11 +120,11 @@ function NavigationBar() {
               Contacts
               </NavLink>
             </NavItem>
-          </Nav>
+          </Nav> */}
         </Collapse>
       </Container>
     </Navbar>
   );
 }
 
-export default NavigationBar;
+export default NavigationHeader;

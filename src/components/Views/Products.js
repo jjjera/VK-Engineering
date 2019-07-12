@@ -1,9 +1,9 @@
 import React from 'react';
-import LandingPageHeader from '../Headers/LandingPageHeader';
+import Layout from '../../pages/Layout';
 
 const Products = () => {
     return(
-        <LandingPageHeader/>
+        <Layout><h1>Products</h1></Layout>
     )
 }
 

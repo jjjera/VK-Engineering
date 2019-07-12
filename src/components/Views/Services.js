@@ -1,9 +1,9 @@
 import React from 'react';
-import LandingPageHeader from '../Headers/LandingPageHeader';
+import Layout from '../../pages/Layout';
 
 const Services = () => {
     return(
-        <LandingPageHeader/>
+        <Layout><h1>Services</h1></Layout>
     )
 }
 

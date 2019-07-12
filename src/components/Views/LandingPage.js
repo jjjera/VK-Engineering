@@ -8,10 +8,7 @@ import {
 } from "reactstrap";
 
 // core components
-// import NavigationBar from "../components/NavBar/NavigationBar";
-import LandingPageHeader from "../components/Headers/LandingPageHeader";
-// import Footer from "../components/Footer/Footer";
-// import SectionCarousel from '../index-sections/SectionCarousel';
+import Layout from '../../pages/Layout';
 
 function LandingPage() {
   document.documentElement.classList.remove("nav-open");
@@ -21,10 +18,9 @@ function LandingPage() {
       document.body.classList.remove("profile-page");
     };
   });
+  
   return (
-    <>
-      {/* <NavigationBar /> */}
-      <LandingPageHeader />
+    <Layout>
       <div className="main">
         <div className="section text-center">
           <Container>
@@ -63,8 +59,7 @@ function LandingPage() {
           </Container>
         </div>
       </div>
-      {/* <Footer /> */}
-    </>
+    </Layout>
   );
 }
 

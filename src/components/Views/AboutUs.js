@@ -1,12 +1,11 @@
 import React from 'react';
-import LandingPageHeader from '../Headers/LandingPageHeader';
+import Layout from '../../pages/Layout';
 
 const AboutUs = () => {
     return(
-        <div>
-            {/* <h1>About-Us</h1> */}
-            <LandingPageHeader/>
-        </div>
+        <Layout>
+            <h1>About Us</h1>
+        </Layout>
     )
 }
 

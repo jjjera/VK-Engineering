@@ -1,5 +1,4 @@
 import React from 'react';
-import LandingPageHeader from '../Headers/LandingPageHeader';
 import {
     Button,
     Form,
@@ -11,11 +10,11 @@ import {
     Row,
     Col
   } from "reactstrap";
+import Layout from '../../pages/Layout';
 
 const Contact = () => {
     return(
-        <div className="section landing-section" style={{backgroundColor:'black'}}>
-        {/* <ExamplesNavbar/> */}
+        <Layout className="section landing-section" style={{backgroundColor:'black'}}>
         <Container>
           <Row>
             <Col className="ml-auto mr-auto" md="8">
@@ -62,7 +61,7 @@ const Contact = () => {
             </Col>
           </Row>
         </Container>
-      </div>   
+      </Layout>   
     )
 }
 
