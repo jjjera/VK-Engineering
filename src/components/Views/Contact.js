@@ -14,8 +14,6 @@ import Layout from '../../pages/Layout';
 import axios from 'axios';
 import Validator from 'validator';
 
-// import { tsPropertySignature } from '@babel/types';
-
 const Contact = () => {
   const initialFormState = {name: '', email: '', number: '', message: '', error : {}};
   const [data, setData] = useState(initialFormState);
@@ -23,11 +21,9 @@ const Contact = () => {
   const handleChange = (event) => {
     const {name, value} = event.target;
     setData({...data, [name]:value});
-    console.log('handleChange data', data);
   }
 
   const validateData = (data) => {
-    // console.log('validate func called',data);
     const errors = {};
 
     if(data.name.length <= 0){
@@ -62,22 +58,22 @@ const Contact = () => {
               <Form className="contact-form" 
                     onSubmit={(event) => {
                     event.preventDefault();
-                    // console.log('error state',data.error);
                     let errors = validateData(data);
-                    console.log('errors are',errors)
-                    console.log('condition is',data.error.name);
                     setData({...data, error:errors});
-                    console.log('submit function data',data);
-                    console.log('condition1 is',data.error.name);
-                    // if(errors)
-                    // axios.post('http://localhost:8001/api/mail/sendmail',{data})
-                    //   .then((response) => {
-                    //     console.log('response is',response);
-                    //   })
-                    //   .catch((error) => {
-                    //     console.log('error block called',error);
-                    //   })
-                    // setData(initialFormState);
+                    if(!data.name || !data.number || !data.email || !data.message){
+                      return;
+                    }else if(data.number.length < 10 || !Validator.isEmail(data.email.toString().trim())){
+                      return;
+                    }
+                    axios.post('http://localhost:8001/api/mail/sendmail',{data})
+                      .then((response) => {
+                        alert('Data updated successfully');
+                        console.log('response is',response);
+                      })
+                      .catch((error) => {
+                        console.log('error block called',error);
+                      })
+                    setData(initialFormState);
                   }}>
                 <Row>
                   <Col md="6">
