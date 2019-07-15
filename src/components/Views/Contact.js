@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import {
-    Button,
-    Form,
-    Input,
-    InputGroupAddon,
-    InputGroupText,
-    InputGroup,
-    Container,
-    Row,
-    Col
-  } from "reactstrap";
+  Button,
+  Form,
+  Input,
+  InputGroupAddon,
+  InputGroupText,
+  InputGroup,
+  Container,
+  Row,
+  Col
+} from "reactstrap";
 import Layout from '../../pages/Layout';
 import axios from 'axios';
 import Validator from 'validator';
+import toaster from 'toasted-notes'
+import 'toasted-notes/src/styles.css';
+
 
 const Contact = () => {
   const initialFormState = {name: '', email: '', number: '', message: '', error : {}};
@@ -49,13 +52,18 @@ const Contact = () => {
     return errors;
   }
 
+  const toastMessage = () => {
+    toaster.notify('Form sumbitted',{duration:2000});
+    toaster.notify('Data received!');
+  }
+
     return(
         <Layout className="section landing-section" style={{backgroundColor:'black'}}>
         <Container>
           <Row>
             <Col className="ml-auto mr-auto" md="8">
               <h2 className="text-center">Keep in touch?</h2>
-              <Form className="contact-form" 
+              <Form className="contact-form"
                     onSubmit={(event) => {
                     event.preventDefault();
                     let errors = validateData(data);
@@ -67,13 +75,13 @@ const Contact = () => {
                     }
                     axios.post('http://localhost:8001/api/mail/sendmail',{data})
                       .then((response) => {
-                        alert('Data updated successfully');
-                        console.log('response is',response);
+                        toastMessage();
+                        // console.log('response is',response);
                       })
                       .catch((error) => {
                         console.log('error block called',error);
                       })
-                    setData(initialFormState);
+                      setData(initialFormState);
                   }}>
                 <Row>
                   <Col md="6">

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link , BrowserRouter as Router} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 // nodejs library that concatenates strings
 import classnames from "classnames";
@@ -10,7 +10,6 @@ import {
   NavbarBrand,
   Navbar,
   NavItem,
-  NavLink,
   Nav,
   Container
 } from "reactstrap";
@@ -79,48 +78,13 @@ function NavigationHeader() {
           navbar
           isOpen={navbarCollapse}
         >
-        <Router>
-            <Link to="/">Home</Link>
-            <Link to="/about-us">About-Us</Link>
-            <Link to="/services">Services</Link>
-            <Link to="/products">Products</Link>
-            <Link to="/contact">Contact</Link>
-        </Router>
-          {/* <Nav navbar>
-            <NavItem>
-              <NavLink to="/" >
-                Home
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink
-                href="/about-us"
-              >
-              About Us
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink
-                 href="/products"
-              >
-              Products
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink
-                href="/services" 
-              >
-              Services
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink
-                 href="/contact"
-              >
-              Contacts
-              </NavLink>
-            </NavItem>
-          </Nav> */}
+        <Nav navbar>
+          <NavItem><NavLink to="/">Home</NavLink></NavItem>
+          <NavItem><NavLink to="/about-us">About-Us</NavLink></NavItem>         
+          <NavItem><NavLink to="/services">Services</NavLink></NavItem>
+          <NavItem><NavLink to="/products">Products</NavLink></NavItem>
+          <NavItem><NavLink to="/contact">Contact</NavLink></NavItem>
+        </Nav>
         </Collapse>
       </Container>
     </Navbar>

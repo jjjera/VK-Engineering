@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 //components
 import Contact from '../components/Views/Contact';
@@ -13,11 +13,11 @@ const Routes = () => {
         <div>
            <BrowserRouter>
             <Switch>
-                <Route exact path="/" component={LandingPage} />
-                <Route path="/contact" component={Contact} />
-                <Route path="/about-us" component={AboutUs} />
-                <Route path="/services" component={Services} />
-                <Route path="/products" component={Products} />
+                <Route exact path="/" component={LandingPage}/>
+                <Route exact path="/contact" component={Contact} />
+                <Route exact path="/about-us" component={AboutUs} />
+                <Route exact path="/services" component={Services} />
+                <Route exact path="/products" component={Products} />
             </Switch>
             </BrowserRouter>
         </div>
