@@ -16,10 +16,12 @@ import Validator from 'validator';
 import toaster from 'toasted-notes'
 import 'toasted-notes/src/styles.css';
 
-
 const Contact = () => {
   const initialFormState = {name: '', email: '', number: '', message: '', error : {}};
   const [data, setData] = useState(initialFormState);
+
+  const loader = {submitLoading:false};
+  const [load, setLoad] = useState(loader);
 
   const handleChange = (event) => {
     const {name, value} = event.target;
@@ -43,8 +45,8 @@ const Contact = () => {
       errors.email = "Invalid Email";
     }
     
-    if(data.number.toString().trim().length === ''){
-      errors.number = "Mobile number cannot be empty";
+    if(data.number === ''){
+      errors.number = "Mobile number field cannot be empty";
     }else if(data.number.toString().trim().length !== 10){
       errors.number ='Mobile number should be 10 digits';
     }
@@ -53,12 +55,17 @@ const Contact = () => {
   }
 
   const toastMessage = () => {
-    toaster.notify('Form sumbitted',{duration:2000});
-    toaster.notify('Data received!');
+    toaster.notify('Data submitted successfully!',{duration:2000});
+    setLoad({...load, submitLoading:false});
   }
 
     return(
         <Layout className="section landing-section" style={{backgroundColor:'black'}}>
+          {load.submitLoading &&  
+          <div className="text-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />
+          </div>
+          }
         <Container>
           <Row>
             <Col className="ml-auto mr-auto" md="8">
@@ -73,10 +80,11 @@ const Contact = () => {
                     }else if(data.number.length < 10 || !Validator.isEmail(data.email.toString().trim())){
                       return;
                     }
+                    setLoad({...load, submitLoading:true});
+                    // console.log('condition is',loader.submitLoading)
                     axios.post('http://localhost:8001/api/mail/sendmail',{data})
                       .then((response) => {
                         toastMessage();
-                        // console.log('response is',response);
                       })
                       .catch((error) => {
                         console.log('error block called',error);
@@ -109,7 +117,6 @@ const Contact = () => {
                     </InputGroup>
                     {data.error.number && <span style={{color:'red'}}>{data.error.number}</span>}
                   </Col>
-
                   <Col md="6">
                     <label>Email</label>
                     <InputGroup>
